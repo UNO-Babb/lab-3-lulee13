@@ -8,6 +8,7 @@ def main():
   wins = 0
   ties = 0
   losses = 0
+  options = ["R", "P", "s"]
   #Create a loop that continues as long as the user wants to play.
   play = "Y"
   while play == "Y":
@@ -19,8 +20,8 @@ def main():
     player = input("Enter choice (R/P/s): ")
 
   #Determine winner and state what happened to the user
-    options = ["R", "P", "s"]
-    computer = random.choice(["R", "P", "s"])
+    
+    computer = random.choice(options)
     if computer == "R":
       print("Computer chose Rock.")
     elif computer == "P":
@@ -51,8 +52,14 @@ def main():
       wins = wins + 1
     else:
       print ("That's not an option, you nitwit. Follow the prompt.")
-  
 
+    if player == "R":   #our computer overlords keeping track of what a player is more likely to choose and making them miserable
+      options.append("P")
+    if player == "P":
+      options.append("S")
+    if player == "S":
+      options.append("R")
+    
   #Ask the user if they would like to play again.
     play = input("Would you like to play again (Y/N)? ")
 
